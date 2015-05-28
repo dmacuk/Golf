@@ -65,13 +65,6 @@
                     EnableRowVirtualization="False"
                     ColumnHeaderStyle="{StaticResource ColumnHeader}"
                     SelectionMode="Single">
-                    <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Renew Membership" Command="{Binding RenewMemberShipCommand}"
-                                          CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
-                            <MenuItem Header="Play Golf" Command="{Binding PlayGolfCommand}" CommandParameter="{Binding ElementName=PeopleGrid,Path=SelectedItem}" />
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
                             <Setter Property="Background" Value="{Binding BindsDirectlyToSource=True,  Converter={StaticResource ColourConvertor}}" />
@@ -95,41 +88,6 @@
                     <Button Content="Invert Selection" Command="{Binding InvertSelectionCommand}" Width="90" Margin="5" />
                 </StackPanel>
             </Grid>
-            <!--            <GridSplitter Grid.Column="1" Width="10" HorizontalAlignment="Center" />-->
-            <!--            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="5" Grid.Column="2">-->
-            <!--                <Grid x:Name="PersonGrid" DataContext="{Binding Person}" Margin="0,3,0,-3">-->
-            <!--                    <Grid.ColumnDefinitions>-->
-            <!--                        <ColumnDefinition Width="Auto" />-->
-            <!--                        <ColumnDefinition Width="*" />-->
-            <!--                    </Grid.ColumnDefinitions>-->
-            <!--                    <Grid.RowDefinitions>-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                        <RowDefinition Height="Auto" />-->
-            <!--                    </Grid.RowDefinitions>-->
-            <!--                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Member #" Margin="5" FontWeight="Bold" />-->
-            <!--                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Name" Margin="5" FontWeight="Bold" />-->
-            <!--                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Address" Margin="5" FontWeight="Bold" />-->
-            <!--                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Phone" Margin="5" FontWeight="Bold" />-->
-            <!--                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Email" Margin="5" FontWeight="Bold" />-->
-            <!--                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MembershipNumber}" Margin="5" IsReadOnly="{Binding NotEditing}" />-->
-            <!--                    <TextBox x:Name="TxtName"  Grid.Column="1" Grid.Row="1" Text="{Binding Name}" Margin="5" IsReadOnly="{Binding NotEditing}" />-->
-            <!--                    <ScrollViewer Grid.Column="1" Grid.Row="2">-->
-            <!--                        <TextBox Text="{Binding Address}" Margin="5" IsReadOnly="{Binding NotEditing}" AcceptsReturn="True" Height="60" />-->
-            <!--                    </ScrollViewer>-->
-            <!--                    <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Phone}" Margin="5" IsReadOnly="{Binding NotEditing}" />-->
-            <!--                    <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Email}" Margin="5" IsReadOnly="{Binding NotEditing}" />-->
-            <!--                    <StackPanel Grid.Column="0" Grid.Row="100" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">-->
-            <!--                        <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="5" Width="40" />-->
-            <!--                        <Button Command="{Binding OkCommand}" Content="OK" Margin="5" Width="40" />-->
-            <!--                    </StackPanel>-->
-            <!--                </Grid>-->
-            <!--            </Border>-->
         </Grid>
     </Grid>
 </Window>
