@@ -72,7 +72,6 @@
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Binding="{Binding Selected}" />
-                        <!--                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" />-->
                         <DataGridTextColumn Header="Member #" Binding="{Binding MembershipNumber}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" />
