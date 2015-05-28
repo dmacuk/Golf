@@ -190,12 +190,13 @@ namespace GolfClub.ViewModel
                 {
                     person.SetPerson(original);
                 }
+                UpdateList();
             }, person => person != null);
 
             PlayGolfCommand = new RelayCommand<Person>(person =>
             {
                 _windowService.PlayGame(person);
-                UpdateList(null, null);
+                UpdateList();
             }, person => person != null);
         }
 
@@ -204,7 +205,7 @@ namespace GolfClub.ViewModel
             return (from person in People where person.Selected && IsValidEmailAddress(person.Email) select person.Email).ToList();
         }
 
-        private void UpdateList(object sender, NotifyCollectionChangedEventArgs e)
+        private void UpdateList(object sender = null, NotifyCollectionChangedEventArgs e = null)
         {
             _listDirty = true;
             Set("FilteredPeople", ref _dummy, _dummy == 0 ? 1 : 0);
