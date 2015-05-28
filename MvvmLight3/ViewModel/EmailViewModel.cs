@@ -1,0 +1,79 @@
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GolfClub.Model;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
+using System.Windows.Input;
+
+namespace GolfClub.ViewModel
+{
+    public class EmailViewModel : ViewModelBase
+    {
+        #region Fields
+
+        private readonly IWindowService _windowService;
+
+        #endregion Fields
+
+        #region Constructors
+
+        public EmailViewModel(IWindowService windowService)
+        {
+            _windowService = windowService;
+
+            SetupEmailCommand = new RelayCommand(() => _windowService.LaunchEmailSetupWindow());
+
+            SendCommand = new RelayCommand(SendMail);
+        }
+
+        #endregion Constructors
+
+        #region Properties
+
+        public string Body { get; set; }
+
+        public List<string> EmailAddresses { get; set; }
+
+        public string FromAddress { get; set; }
+
+        public string Password { get; set; }
+
+        public ICommand SendCommand { get; set; }
+
+        public ICommand SetupEmailCommand { get; set; }
+
+        public string Smtp { get; set; }
+
+        public string Subject { get; set; }
+
+        public string User { get; set; }
+
+        #endregion Properties
+
+        #region Methods
+
+        private void SendMail()
+        {
+            using (var mail = new MailMessage())
+            {
+                mail.From = new MailAddress(FromAddress);
+                foreach (var emailAddress in EmailAddresses)
+                {
+                    mail.To.Add(new MailAddress(emailAddress));
+                }
+                mail.Subject = Subject;
+                mail.Body = Body;
+                mail.IsBodyHtml = false;
+                using (var smtp = new SmtpClient(Smtp, 587))
+                {
+                    smtp.Credentials = new NetworkCredential(FromAddress, Password);
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
+        }
+
+        #endregion Methods
+    }
+}

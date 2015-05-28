@@ -1,0 +1,32 @@
+﻿<Window x:Class="GolfClub.Windows.EmailSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Email Setup" Height="181" Width="359" Closing="WindowClosing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="SMTP Server" Style="{StaticResource GolfTextBlockStyle}" />
+        <TextBox x:Name="TxtSmtp" Grid.Row="0" Grid.Column="1" Style="{StaticResource GolfTextBoxStyle}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="User" Style="{StaticResource GolfTextBlockStyle}" />
+        <TextBox x:Name="TxtUser" Grid.Row="1" Grid.Column="1" Style="{StaticResource GolfTextBoxStyle}" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Password" Style="{StaticResource GolfTextBlockStyle}" />
+        <PasswordBox x:Name="TxtPassword" Grid.Row="2" Grid.Column="1" Margin="5" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="From Address" Style="{StaticResource GolfTextBlockStyle}" />
+        <TextBox x:Name="TxtFromAddress" Grid.Row="3" Grid.Column="1" Style="{StaticResource GolfTextBoxStyle}" />
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="Cancel" Width="40" Margin="5" Click="CancelClick" />
+            <Button Content="OK" Width="40" Margin="5" Click="OkClick" />
+        </StackPanel>
+    </Grid>
+</Window>
