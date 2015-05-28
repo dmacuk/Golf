@@ -32,7 +32,6 @@
             Name="GameDate"
 			Grid.Row="2"
 			Grid.Column="1"
-			Value="{Binding MembershipStartDate}"
 			Margin="5" Format="ShortDate"
 			ShowButtonSpinner="False"
 			TimePickerVisibility="Collapsed"

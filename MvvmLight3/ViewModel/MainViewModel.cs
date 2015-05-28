@@ -192,7 +192,11 @@ namespace GolfClub.ViewModel
                 }
             }, person => person != null);
 
-            PlayGolfCommand = new RelayCommand<Person>(person => _windowService.PlayGame(person), person => person != null);
+            PlayGolfCommand = new RelayCommand<Person>(person =>
+            {
+                _windowService.PlayGame(person);
+                UpdateList(null, null);
+            }, person => person != null);
         }
 
         private List<string> GetEmailAddressList()
