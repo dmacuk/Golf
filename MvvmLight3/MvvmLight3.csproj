@@ -207,28 +207,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\077_AddFile_16x16_72.png" />
+    <Resource Include="Images\Delete.ico" />
+    <Resource Include="Images\Edit.ico" />
+    <Resource Include="Images\Email.ico" />
+    <Resource Include="Images\Save.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\126_Edit_16x16_72.png" />
+    <Resource Include="Images\Add.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\delete_16x.ico" />
+    <Resource Include="Images\Edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\Membership.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1432899353_membership.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\1432899493_golf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\1432899684_message.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\1432899925_Noun_Project_100Icon_10px_grid-38.ico" />
+    <Resource Include="Images\PlayGolf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

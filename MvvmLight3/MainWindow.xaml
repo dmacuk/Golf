@@ -26,45 +26,45 @@
             <ToolBar>
                 <Button Command="{Binding AddCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/077_AddFile_16x16_72.png"  Height="16" Width="16"/>
+                        <Image Source="Images/Add.ico"  Height="16" Width="16"/>
                         <TextBlock Text="Add" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=PeopleTable,Path=SelectedItem}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/126_Edit_16x16_72.png" Height="16" Width="16"/>
+                        <Image Source="Images/Edit.png" Height="16" Width="16"/>
                         <TextBlock Text="Edit" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=PeopleTable,Path=SelectedItem}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/delete_16x.ico"  Height="16" Width="16"/>
+                        <Image Source="Images/Delete.ico"  Height="16" Width="16"/>
                         <TextBlock Text="Delete" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button Command="{Binding RenewMemberShipCommand}" CommandParameter="{Binding ElementName=PeopleTable,Path=SelectedItem}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/1432899353_membership.png"  Height="16" Width="16"/>
+                        <Image Source="Images/Membership.png"  Height="16" Width="16"/>
                         <TextBlock Text="Renew" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding PlayGolfCommand}" CommandParameter="{Binding ElementName=PeopleTable,Path=SelectedItem}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/1432899493_golf.png"  Height="16" Width="16"/>
+                        <Image Source="Images/PlayGolf.png"  Height="16" Width="16"/>
                         <TextBlock Text="Play" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button Command="{Binding EmailCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/1432899684_message.ico"  Height="16" Width="16"/>
+                        <Image Source="Images/Email.ico"  Height="16" Width="16"/>
                         <TextBlock Text="Email" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding SaveCommand}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/1432899925_Noun_Project_100Icon_10px_grid-38.ico"  Height="16" Width="16"/>
+                        <Image Source="Images/Save.ico"  Height="16" Width="16"/>
                         <TextBlock Text="Save" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
@@ -106,7 +106,7 @@
                         </Style>
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Binding="{Binding Selected}" />
+                        <DataGridCheckBoxColumn Binding="{Binding Selected, UpdateSourceTrigger=PropertyChanged}" />
                         <DataGridTextColumn Header="Member #" Binding="{Binding MembershipNumber}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" />
                         <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" />

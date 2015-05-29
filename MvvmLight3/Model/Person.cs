@@ -148,7 +148,7 @@ namespace GolfClub.Model
         public bool Selected
         {
             get { return _selected; }
-            set { if (Set("Selected", ref _selected, value)) Dirty = true; }
+            set {Set("Selected", ref _selected, value); }
         }
 
         public int TotalGuests

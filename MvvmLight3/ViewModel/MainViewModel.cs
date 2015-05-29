@@ -156,7 +156,10 @@ namespace GolfClub.ViewModel
             EmailCommand = new RelayCommand(() =>
             {
                 var emailAddressList = GetEmailAddressList();
-                _windowService.LaunchEmailWindow(emailAddressList);
+                if (emailAddressList.Count > 0)
+                {
+                    _windowService.LaunchEmailWindow(emailAddressList);
+                }
             });
 
             SelectAllCommand = new RelayCommand(() =>
@@ -202,7 +205,7 @@ namespace GolfClub.ViewModel
 
         private List<string> GetEmailAddressList()
         {
-            return (from person in People where person.Selected && IsValidEmailAddress(person.Email) select person.Email).ToList();
+            return (from person in People where person.Selected where IsValidEmailAddress(person.Email) select person.Email).ToList();
         }
 
         private void UpdateList(object sender = null, NotifyCollectionChangedEventArgs e = null)
