@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Windows;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GolfClub.Model;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace GolfClub.ViewModel
         #region Fields
 
         private readonly IWindowService _windowService;
+        private string _attachment;
+        private bool _dummy;
+        private string _attachmentButtonText;
 
         #endregion Fields
 
@@ -25,6 +29,10 @@ namespace GolfClub.ViewModel
             SetupEmailCommand = new RelayCommand(() => _windowService.LaunchEmailSetupWindow());
 
             SendCommand = new RelayCommand(SendMail);
+
+            AttachCommand = new RelayCommand(AddAttachment);
+
+            Attachment = string.Empty;
         }
 
         #endregion Constructors
@@ -49,6 +57,28 @@ namespace GolfClub.ViewModel
 
         public string User { get; set; }
 
+        public ICommand AttachCommand { get; set; }
+
+        public Visibility HasAttachment
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(Attachment) ? Visibility.Hidden : Visibility.Visible;
+            }
+        }
+
+        public string Attachment
+        {
+            get { return _attachment; }
+            set { if (Set("Attachment", ref _attachment, value)) Set("HasAttachment", ref _dummy, !_dummy); }
+        }
+
+        public string AttachmentButtonText
+        {
+            get { return _attachmentButtonText; }
+            set { Set("AttachmentButtonText", ref _attachmentButtonText, value); }
+        }
+
         #endregion Properties
 
         #region Methods
@@ -71,6 +101,20 @@ namespace GolfClub.ViewModel
                     smtp.EnableSsl = true;
                     smtp.Send(mail);
                 }
+            }
+        }
+
+        private void AddAttachment()
+        {
+            if (string.IsNullOrWhiteSpace(Attachment))
+            {
+                Attachment = "Has attachment";
+                AttachmentButtonText = "Detach";
+            }
+            else
+            {
+                Attachment = string.Empty;
+                AttachmentButtonText = "Attach";
             }
         }
 
