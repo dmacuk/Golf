@@ -32,6 +32,11 @@ namespace GolfClub.Design
             throw new System.NotImplementedException();
         }
 
+        public string GetAttachment()
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion Methods
     }
 }

@@ -17,5 +17,6 @@ namespace GolfClub.Model
         void PlayGame(Person person);
 
         bool? RenewMembership(Person person);
+        string GetAttachment();
     }
 }

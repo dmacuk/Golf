@@ -33,6 +33,8 @@ namespace GolfClub.ViewModel
             AttachCommand = new RelayCommand(AddAttachment);
 
             Attachment = string.Empty;
+
+            AttachmentButtonText = "Attach";
         }
 
         #endregion Constructors
@@ -95,6 +97,13 @@ namespace GolfClub.ViewModel
                 mail.Subject = Subject;
                 mail.Body = Body;
                 mail.IsBodyHtml = false;
+                if (!string.IsNullOrWhiteSpace(Attachment))
+                {
+                    mail.Attachments.Add(new Attachment(Attachment));
+                }
+                {
+                    
+                }
                 using (var smtp = new SmtpClient(Smtp, 587))
                 {
                     smtp.Credentials = new NetworkCredential(FromAddress, Password);
@@ -108,8 +117,11 @@ namespace GolfClub.ViewModel
         {
             if (string.IsNullOrWhiteSpace(Attachment))
             {
-                Attachment = "Has attachment";
-                AttachmentButtonText = "Detach";
+                Attachment = _windowService.GetAttachment();
+                if (!string.IsNullOrWhiteSpace(Attachment))
+                {
+                    AttachmentButtonText = "Detach";
+                }
             }
             else
             {

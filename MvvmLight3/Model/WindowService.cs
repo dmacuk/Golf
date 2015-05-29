@@ -1,6 +1,7 @@
 ﻿using GolfClub.Windows;
 using System.Collections.Generic;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace GolfClub.Model
 {
@@ -32,6 +33,22 @@ namespace GolfClub.Model
         public bool? RenewMembership(Person person)
         {
             return new RenewMembershipWindow(person).ShowDialog();
+        }
+
+        public string GetAttachment()
+        {
+            var dlg = new OpenFileDialog {Filter = "All Files (*.*)|*.*"};
+
+            if (dlg.ShowDialog() == true)
+            {
+                return dlg.FileName;
+            }
+            else
+            {
+                return string.Empty;
+            }
+                ;
+
         }
 
         #endregion Methods

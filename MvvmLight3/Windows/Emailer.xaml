@@ -9,19 +9,21 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ToolBarTray Grid.Row="0">
-            <ToolBar>
-                <Button Content="Setup" Margin="5" Command="{Binding SetupEmailCommand}" />
-                <Separator></Separator>
-                <Button Content="Send" Margin="5" Width="40" Click="SendClick" Command="{Binding SendCommand}" />
-                <Separator></Separator>
-                <Button Content="{Binding AttachmentButtonText}" Margin="5" Width="40" Command="{Binding AttachCommand}" />
-                <TextBlock VerticalAlignment="Center" Visibility="{Binding HasAttachment}">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ToolBarTray>
+                <ToolBar>
+                    <Button Content="Setup" Margin="5" Command="{Binding SetupEmailCommand}" />
+                    <Separator></Separator>
+                    <Button Content="Send" Margin="5" Click="SendClick" Command="{Binding SendCommand}" />
+                    <Separator></Separator>
+                    <Button Content="{Binding AttachmentButtonText}" Margin="5" Command="{Binding AttachCommand}" />
+                </ToolBar>
+            </ToolBarTray>
+            <TextBlock VerticalAlignment="Center" Visibility="{Binding HasAttachment}">
                     <Run Text=" Attachment: " FontWeight="Bold"/>
                     <Run Text="{Binding Attachment}"/>
-                </TextBlock>
-            </ToolBar>
-        </ToolBarTray>
+            </TextBlock>
+        </StackPanel>
         <Border Margin="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="5">
             <Grid>
                 <Grid.ColumnDefinitions>
