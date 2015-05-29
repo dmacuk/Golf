@@ -6,8 +6,6 @@ namespace GolfClub.Model
     {
         #region Methods
 
-        void LaunchEmailSetupWindow();
-
         void LaunchEmailWindow(List<string> persons);
 
         #endregion Methods
@@ -18,5 +16,6 @@ namespace GolfClub.Model
 
         bool? RenewMembership(Person person);
         string GetAttachment();
+        void LaunchSettingsWindow();
     }
 }

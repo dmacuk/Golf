@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Linq.Expressions;
+using System.Windows;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GolfClub.Model;
 using System;
@@ -8,6 +10,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Mail;
 using System.Windows.Input;
+using GolfClub.Properties;
 
 namespace GolfClub.ViewModel
 {
@@ -22,6 +25,8 @@ namespace GolfClub.ViewModel
         private bool _listDirty;
         private ObservableCollection<Person> _people;
         private string _search;
+        private Visibility _showToolbarIcons;
+        private Visibility _showToolbarText;
 
         #endregion Fields
 
@@ -46,6 +51,7 @@ namespace GolfClub.ViewModel
             });
 
             CreateCommands();
+            ToolbarSettings();
         }
 
         #endregion Constructors
@@ -94,6 +100,20 @@ namespace GolfClub.ViewModel
         public ICommand SelectAllCommand { get; set; }
 
         public ICommand SelectNoneCommand { get; set; }
+
+        public Visibility ShowToolbarIcons
+        {
+            get { return _showToolbarIcons; }
+            set { Set("ShowToolbarIcons", ref _showToolbarIcons, value); }
+        }
+
+        public Visibility ShowToolbarText
+        {
+            get { return _showToolbarText; }
+            set { Set("ShowToolbarText", ref _showToolbarText, value); }
+        }
+
+        public ICommand SettingsCommand { get; set; }
 
         #endregion Properties
 
@@ -201,6 +221,12 @@ namespace GolfClub.ViewModel
                 _windowService.PlayGame(person);
                 UpdateList();
             }, person => person != null);
+
+            SettingsCommand = new RelayCommand(() =>
+            {
+                _windowService.LaunchSettingsWindow();
+                ToolbarSettings();
+            });
         }
 
         private List<string> GetEmailAddressList()
@@ -212,6 +238,17 @@ namespace GolfClub.ViewModel
         {
             _listDirty = true;
             Set("FilteredPeople", ref _dummy, _dummy == 0 ? 1 : 0);
+        }
+
+        private void ToolbarSettings()
+        {
+            ShowToolbarIcons = GetVisiblity(Settings.Default.ShowToolbarIcons);
+            ShowToolbarText = GetVisiblity(Settings.Default.ShowToolbarText);
+        }
+
+        private static Visibility GetVisiblity(bool state)
+        {
+            return state ? Visibility.Visible : Visibility.Collapsed;
         }
 
         #endregion Methods

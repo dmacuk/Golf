@@ -73,25 +73,25 @@ namespace GolfClub.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double PeopleGridWidth {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowToolbarIcons {
             get {
-                return ((double)(this["PeopleGridWidth"]));
+                return ((bool)(this["ShowToolbarIcons"]));
             }
             set {
-                this["PeopleGridWidth"] = value;
+                this["ShowToolbarIcons"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double PersonGridWidth {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowToolbarText {
             get {
-                return ((double)(this["PersonGridWidth"]));
+                return ((bool)(this["ShowToolbarText"]));
             }
             set {
-                this["PersonGridWidth"] = value;
+                this["ShowToolbarText"] = value;
             }
         }
     }

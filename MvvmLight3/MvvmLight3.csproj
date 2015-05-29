@@ -101,9 +101,6 @@
     <Compile Include="Windows\Emailer.xaml.cs">
       <DependentUpon>Emailer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\EmailSetup.xaml.cs">
-      <DependentUpon>EmailSetup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\IWindowService.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\DataService.cs" />
@@ -123,11 +120,10 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Utilities\WindowSettingsExtensions.cs" />
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\Emailer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EmailSetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +154,10 @@
     <Page Include="Skins\MainSkin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Delete.ico" />
-    <Resource Include="Images\Edit.ico" />
     <Resource Include="Images\Email.ico" />
     <Resource Include="Images\Save.ico" />
   </ItemGroup>
@@ -223,6 +222,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PlayGolf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Settings.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

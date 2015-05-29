@@ -26,8 +26,6 @@ namespace GolfClub.ViewModel
         {
             _windowService = windowService;
 
-            SetupEmailCommand = new RelayCommand(() => _windowService.LaunchEmailSetupWindow());
-
             SendCommand = new RelayCommand(SendMail);
 
             AttachCommand = new RelayCommand(AddAttachment);
@@ -50,8 +48,6 @@ namespace GolfClub.ViewModel
         public string Password { get; set; }
 
         public ICommand SendCommand { get; set; }
-
-        public ICommand SetupEmailCommand { get; set; }
 
         public string Smtp { get; set; }
 

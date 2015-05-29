@@ -14,11 +14,6 @@ namespace GolfClub.Model
             return new EditPersonWindow(person).ShowDialog() == true;
         }
 
-        public void LaunchEmailSetupWindow()
-        {
-            new EmailSetup().ShowDialog();
-        }
-
         public void LaunchEmailWindow(List<string> persons)
         {
             Window win = new Emailer(persons);
@@ -49,6 +44,11 @@ namespace GolfClub.Model
             }
                 ;
 
+        }
+
+        public void LaunchSettingsWindow()
+        {
+            new SettingsWindow().ShowDialog();
         }
 
         #endregion Methods

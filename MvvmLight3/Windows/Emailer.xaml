@@ -12,8 +12,6 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <ToolBarTray>
                 <ToolBar>
-                    <Button Content="Setup" Margin="5" Command="{Binding SetupEmailCommand}" />
-                    <Separator></Separator>
                     <Button Content="Send" Margin="5" Click="SendClick" Command="{Binding SendCommand}" />
                     <Separator></Separator>
                     <Button Content="{Binding AttachmentButtonText}" Margin="5" Command="{Binding AttachCommand}" />

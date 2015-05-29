@@ -12,11 +12,6 @@ namespace GolfClub.Design
             throw new System.NotImplementedException();
         }
 
-        public void LaunchEmailSetupWindow()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void LaunchEmailWindow(List<string> persons)
         {
             throw new System.NotImplementedException();
@@ -33,6 +28,11 @@ namespace GolfClub.Design
         }
 
         public string GetAttachment()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void LaunchSettingsWindow()
         {
             throw new System.NotImplementedException();
         }
