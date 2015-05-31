@@ -20,9 +20,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ToolBarTray Grid.Row="0">
+        <Menu Grid.Row="0" Margin="5">
+            <MenuItem Header="_Reports">
+                <MenuItem Header="All entries" Command="{Binding ReportAllEntries}"/>
+                <MenuItem Header="Expired entries" Command="{Binding ReportExpiredEntries}"/>
+                <MenuItem Header="Due entries" Command="{Binding ReportDueEntries}"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1">
             <ToolBar>
                 <Button Command="{Binding AddCommand}">
                     <StackPanel Orientation="Horizontal">
@@ -74,9 +82,16 @@
                         <TextBlock Text="Settings" Margin="5,0,0,0" Visibility="{Binding ShowToolbarText}"/>
                     </StackPanel>
                 </Button>
+                <Separator />
+                <Button Click="CloseWindow">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Email.ico"  Height="16" Width="16" Visibility="{Binding ShowToolbarIcons}"/>
+                        <TextBlock Text="Exit" Margin="5,0,0,0" Visibility="{Binding ShowToolbarText}"/>
+                    </StackPanel>
+                </Button>
             </ToolBar>
         </ToolBarTray>
-        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5">
+        <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5">
             <Grid x:Name="SearchGrid" ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -86,7 +101,7 @@
                 <TextBox Grid.Column="1" Margin="5" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
         </Border>
-        <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5">
+        <Border Grid.Row="3" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5">
             <Grid Name="PeopleGrid" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -125,11 +140,10 @@
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <Button Content="Select All" Command="{Binding SelectAllCommand}" Width="90" Margin="5" />
                     <Button Content="Select None" Command="{Binding SelectNoneCommand}" Width="90" Margin="5" />
-                    <Button Content="Invert Selection" Command="{Binding InvertSelectionCommand}" Width="90" Margin="5" />
-                </StackPanel>
+                        <Button Content="Invert Selection" Command="{Binding InvertSelectionCommand}" Width="90" Margin="5" />
+                    </StackPanel>
             </Grid>
         </Grid>
         </Border>
-            
     </Grid>
 </Window>

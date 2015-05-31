@@ -1,4 +1,5 @@
-﻿using GolfClub.Utilities;
+﻿using System.Windows;
+using GolfClub.Utilities;
 using GolfClub.ViewModel;
 using System.ComponentModel;
 
@@ -35,5 +36,10 @@ namespace GolfClub
         }
 
         #endregion Methods
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

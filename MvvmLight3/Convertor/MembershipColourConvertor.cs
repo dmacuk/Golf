@@ -35,7 +35,7 @@ namespace GolfClub.Convertor
     {
         #region Fields
 
-        private const int AlertDays = 30;
+        public const int AlertDays = 30;
         private readonly SolidColorBrush _alertColour = Brushes.Yellow;
         private readonly SolidColorBrush _defaultColour = Brushes.White;
         private readonly SolidColorBrush _overDueColour = Brushes.Red;

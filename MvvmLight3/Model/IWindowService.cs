@@ -17,5 +17,6 @@ namespace GolfClub.Model
         bool? RenewMembership(Person person);
         string GetAttachment();
         void LaunchSettingsWindow();
+        void Report(List<Person> data);
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GolfClub.Convertor;
 using GolfClub.Model;
 using System;
 using System.Collections.Generic;
@@ -115,6 +116,12 @@ namespace GolfClub.ViewModel
 
         public ICommand SettingsCommand { get; set; }
 
+        public ICommand ReportAllEntries { get; set; }
+
+        public ICommand ReportExpiredEntries { get; set; }
+
+        public ICommand ReportDueEntries { get; set; }
+
         #endregion Properties
 
         #region Methods
@@ -226,6 +233,21 @@ namespace GolfClub.ViewModel
             {
                 _windowService.LaunchSettingsWindow();
                 ToolbarSettings();
+            });
+
+            ReportAllEntries = new RelayCommand(() =>
+            {
+                _windowService.Report(People.ToList());
+            });
+
+            ReportExpiredEntries = new RelayCommand(() =>
+            {
+                _windowService.Report(People.Where(p=>p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays)==AlertState.Expired).ToList());
+            });
+
+            ReportDueEntries = new RelayCommand(() =>
+            {
+                _windowService.Report(People.Where(p => p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays) == AlertState.DueToExpire).ToList());
             });
         }
 
