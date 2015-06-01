@@ -116,11 +116,15 @@ namespace GolfClub.ViewModel
 
         public ICommand SettingsCommand { get; set; }
 
-        public ICommand ReportAllEntries { get; set; }
+        public ICommand ReportAllEntriesCommand { get; set; }
 
-        public ICommand ReportExpiredEntries { get; set; }
+        public ICommand ReportExpiredEntriesCommand { get; set; }
 
-        public ICommand ReportDueEntries { get; set; }
+        public ICommand ReportDueEntriesCommand { get; set; }
+
+        public ICommand SelectDueCommand { get; set; }
+
+        public ICommand SelectExpiredCommand { get; set; }
 
         #endregion Properties
 
@@ -197,13 +201,7 @@ namespace GolfClub.ViewModel
                 }
             });
 
-            SelectNoneCommand = new RelayCommand(() =>
-            {
-                foreach (var person in People)
-                {
-                    person.Selected = false;
-                }
-            });
+            SelectNoneCommand = new RelayCommand(SelectNone);
 
             InvertSelectionCommand = new RelayCommand(() =>
             {
@@ -235,20 +233,43 @@ namespace GolfClub.ViewModel
                 ToolbarSettings();
             });
 
-            ReportAllEntries = new RelayCommand(() =>
-            {
-                _windowService.Report(People.ToList());
-            });
+            ReportAllEntriesCommand = new RelayCommand(() => _windowService.Report(People.ToList()));
 
-            ReportExpiredEntries = new RelayCommand(() =>
-            {
-                _windowService.Report(People.Where(p=>p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays)==AlertState.Expired).ToList());
-            });
+            ReportExpiredEntriesCommand = new RelayCommand(() => _windowService.Report(MembershipExpiredPeople().ToList()));
 
-            ReportDueEntries = new RelayCommand(() =>
+            ReportDueEntriesCommand = new RelayCommand(() => _windowService.Report(MembershipDuePeople().ToList()));
+
+            SelectDueCommand = new RelayCommand(() => Select(MembershipDuePeople()));
+
+            SelectExpiredCommand = new RelayCommand(() => Select(MembershipExpiredPeople()));
+
+        }
+
+        private void Select(IEnumerable<Person> selection)
+        {
+            SelectNone();
+            foreach (var person in selection)
             {
-                _windowService.Report(People.Where(p => p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays) == AlertState.DueToExpire).ToList());
-            });
+                person.Selected = true;
+            }
+        }
+
+        private void SelectNone()
+        {
+            foreach (var person in People)
+            {
+                person.Selected = false;
+            }
+        }
+
+        private IEnumerable<Person> MembershipDuePeople()
+        {
+            return People.Where(p => p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays) == AlertState.DueToExpire);
+        }
+
+        private IEnumerable<Person> MembershipExpiredPeople()
+        {
+            return People.Where(p=>p.MembershipExpiryDate.Alert(MembershipColourConvertor.AlertDays)==AlertState.Expired);
         }
 
         private List<string> GetEmailAddressList()
