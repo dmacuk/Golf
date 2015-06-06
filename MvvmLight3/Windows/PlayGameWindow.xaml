@@ -32,11 +32,11 @@
             Name="GameDate"
 			Grid.Row="2"
 			Grid.Column="1"
-			Margin="5" Format="ShortDate"
+			Margin="5,5,0,5" Format="ShortDate"
 			ShowButtonSpinner="False"
 			TimePickerVisibility="Collapsed"
-			TextAlignment="Left" Text="" AutoCloseCalendar="True" />
-        <TextBox PreviewTextInput="ValidateNumber" Name="TextNumberGuests" Grid.Column="1" Grid.Row="3" Margin="5" />
+			TextAlignment="Left" Text="" AutoCloseCalendar="True" HorizontalAlignment="Left" MinWidth="90" />
+        <TextBox PreviewTextInput="ValidateNumber" Name="TextNumberGuests" Grid.Column="1" Grid.Row="3" Margin="5" Text="88/88/8888" />
 
         <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Content="OK" Margin="5" Width="40" Click="OkClick" />
