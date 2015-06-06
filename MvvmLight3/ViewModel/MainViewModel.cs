@@ -233,11 +233,11 @@ namespace GolfClub.ViewModel
                 ToolbarSettings();
             });
 
-            ReportAllEntriesCommand = new RelayCommand(() => _windowService.Report(People.ToList()));
+            ReportAllEntriesCommand = new RelayCommand(() => _windowService.Report("All Members", People.ToList()));
 
-            ReportExpiredEntriesCommand = new RelayCommand(() => _windowService.Report(MembershipExpiredPeople().ToList()));
+            ReportExpiredEntriesCommand = new RelayCommand(() => _windowService.Report("Expired Members", MembershipExpiredPeople().ToList()));
 
-            ReportDueEntriesCommand = new RelayCommand(() => _windowService.Report(MembershipDuePeople().ToList()));
+            ReportDueEntriesCommand = new RelayCommand(() => _windowService.Report("Membership Due", MembershipDuePeople().ToList()));
 
             SelectDueCommand = new RelayCommand(() => Select(MembershipDuePeople()));
 
