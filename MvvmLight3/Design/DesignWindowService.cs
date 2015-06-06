@@ -37,7 +37,7 @@ namespace GolfClub.Design
             throw new System.NotImplementedException();
         }
 
-        public void Report(string reportTitle, List<Person> data)
+        public void Report(List<Person> data)
         {
             throw new System.NotImplementedException();
         }

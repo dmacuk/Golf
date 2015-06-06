@@ -479,7 +479,7 @@
         </TablixRowHierarchy>
         <DataSetName>PeopleDataSet</DataSetName>
         <Height>1.2cm</Height>
-        <Width>19.28563cm</Width>
+        <Width>19.28562cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -490,10 +490,10 @@
     <Height>0.47244in</Height>
     <Style />
   </Body>
-  <Width>19.28563cm</Width>
+  <Width>19.28562cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.8575cm</Height>
+      <Height>1.905cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -549,7 +549,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Height>0.6cm</Height>
           <Width>1.73271cm</Width>
           <ZIndex>1</ZIndex>
@@ -585,7 +585,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Left>1.73271cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -622,7 +622,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Left>4.2327cm</Left>
           <Height>0.6cm</Height>
           <Width>5.65042cm</Width>
@@ -659,7 +659,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Left>9.88312cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -696,7 +696,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Left>12.38312cm</Left>
           <Height>0.6cm</Height>
           <Width>4.74646cm</Width>
@@ -735,7 +735,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox11</rd:DefaultName>
-          <Top>2.2575cm</Top>
+          <Top>1.305cm</Top>
           <Left>17.12958cm</Left>
           <Height>0.6cm</Height>
           <Width>2.15604cm</Width>
@@ -746,40 +746,6 @@
               <Style>Solid</Style>
             </Border>
             <BackgroundColor>#4c68a2</BackgroundColor>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox15">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!ReportTitle.Value</Value>
-                  <Style>
-                    <FontSize>14pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>0.94396cm</Top>
-          <Left>0.00001cm</Left>
-          <Height>0.94396cm</Height>
-          <Width>19.28562cm</Width>
-          <ZIndex>7</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -809,9 +775,7 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
+              <Style />
             </Paragraph>
           </Paragraphs>
           <Top>0.32604cm</Top>
@@ -871,17 +835,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Line Name="Line1">
-          <Top>0.10583cm</Top>
-          <Height>0cm</Height>
-          <Width>19.28562cm</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>Solid</Style>
-            </Border>
-          </Style>
-        </Line>
       </ReportItems>
       <Style>
         <Border>
@@ -971,12 +924,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <ReportParameters>
-    <ReportParameter Name="ReportTitle">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>5ff0218a-d209-4f0b-87a3-3f8c914c94f6</rd:ReportID>
 </Report>

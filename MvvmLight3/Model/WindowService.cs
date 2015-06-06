@@ -51,9 +51,9 @@ namespace GolfClub.Model
             new SettingsWindow().ShowDialog();
         }
 
-        public void Report(string reportTitle, List<Person> data)
+        public void Report(List<Person> data)
         {
-            new ReportWindow(reportTitle, data).ShowDialog();
+            new ReportWindow(data).ShowDialog();
         }
 
         #endregion Methods
