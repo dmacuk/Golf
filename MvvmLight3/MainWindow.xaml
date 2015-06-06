@@ -112,15 +112,15 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <DataGrid
-                    Name="PeopleTable"
-                    ItemsSource="{Binding FilteredPeople}"
-                    AutoGenerateColumns="False"
-                    CanUserAddRows="False"
-                    CanUserDeleteRows="False"
-                    CanUserResizeRows="False"
-                    EnableRowVirtualization="False"
-                    ColumnHeaderStyle="{StaticResource ColumnHeader}"
-                    SelectionMode="Single">
+                        Name="PeopleTable"
+                        ItemsSource="{Binding FilteredPeople}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False"
+                        CanUserResizeRows="False"
+                        EnableRowVirtualization="False"
+                        ColumnHeaderStyle="{StaticResource ColumnHeader}"
+                        SelectionMode="Single">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="{Binding BindsDirectlyToSource=True,  Converter={StaticResource ColourConvertor}}" />
