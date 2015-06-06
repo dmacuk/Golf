@@ -105,14 +105,11 @@
     <Compile Include="Convertor\MembershipColourConvertor.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignWindowService.cs" />
+    <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\WindowService.cs" />
     <Compile Include="Windows\Emailer.xaml.cs">
       <DependentUpon>Emailer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\IWindowService.cs" />
-    <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\DataService.cs" />
-    <Compile Include="Model\IDataService.cs" />
-    <Compile Include="Model\WindowService.cs" />
     <Compile Include="Windows\EditPersonWindow.xaml.cs">
       <DependentUpon>EditPersonWindow.xaml</DependentUpon>
     </Compile>
@@ -123,9 +120,6 @@
       <DependentUpon>RenewMembershipWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="ViewModel\EmailViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Utilities\WindowSettingsExtensions.cs" />
     <Compile Include="Windows\ReportWindow.xaml.cs">
       <DependentUpon>ReportWindow.xaml</DependentUpon>
@@ -241,7 +235,9 @@
   <ItemGroup>
     <Resource Include="Images\Settings.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

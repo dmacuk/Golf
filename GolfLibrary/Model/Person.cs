@@ -1,10 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using GalaSoft.MvvmLight;
 
-namespace GolfClub.Model
+namespace GolfLibrary.Model
 {
     public class Game : ObservableObject
     {

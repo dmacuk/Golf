@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GolfLibrary.Model;
 
 namespace GolfClub.Model
 {
