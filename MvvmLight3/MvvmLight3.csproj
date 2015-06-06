@@ -106,7 +106,13 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Design\DesignWindowService.cs" />
     <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Model\IWindowService.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Model\WindowService.cs" />
+    <Compile Include="ViewModel\EmailViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Windows\Emailer.xaml.cs">
       <DependentUpon>Emailer.xaml</DependentUpon>
     </Compile>
