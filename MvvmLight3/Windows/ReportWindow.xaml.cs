@@ -13,11 +13,13 @@ namespace GolfClub.Windows
     /// </summary>
     public partial class ReportWindow
     {
+        private readonly string _reportTitle;
         private readonly List<Person> _data;
         private bool _isReportLoaded;
 
-        public ReportWindow(List<Person> data)
+        public ReportWindow(string reportTitle, List<Person> data)
         {
+            _reportTitle = reportTitle;
             _data = data;
             InitializeComponent();
             ReportViewer.Load += ReportLoad;
@@ -36,8 +38,11 @@ namespace GolfClub.Windows
 
             var ds = BuildDataSet();
             var dataSource = new ReportDataSource("PeopleDataSet", ds.Tables[0]);
-            ReportViewer.LocalReport.DataSources.Add(dataSource);
-            ReportViewer.LocalReport.ReportPath = "../../Reports/Report1.rdlc";
+            var localReport = ReportViewer.LocalReport;
+            localReport.DataSources.Add(dataSource);
+            localReport.ReportPath = "../../Reports/Report1.rdlc";
+            ReportParameter parameter = new ReportParameter("ReportTitle", _reportTitle);
+            localReport.SetParameters(parameter);
             ReportViewer.RefreshReport();
             _isReportLoaded = true;
         }
