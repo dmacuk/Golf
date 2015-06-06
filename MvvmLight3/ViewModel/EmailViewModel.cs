@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GolfClub.Interfaces;
 using GolfClub.Model;
 using System.Collections.Generic;
 using System.Net;

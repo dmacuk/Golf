@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using GolfClub.Model;
 
-namespace GolfClub.Model
+namespace GolfClub.Interfaces
 {
     public interface IDataService
     {

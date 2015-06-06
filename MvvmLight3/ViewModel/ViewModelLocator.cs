@@ -12,7 +12,9 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GolfClub.Design;
+using GolfClub.Interfaces;
 using GolfClub.Model;
+using GolfClub.Services;
 using Microsoft.Practices.ServiceLocation;
 
 namespace GolfClub.ViewModel

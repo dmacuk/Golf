@@ -1,4 +1,5 @@
-﻿using GolfClub.Model;
+﻿using GolfClub.Interfaces;
+using GolfClub.Model;
 using System;
 using System.Collections.Generic;
 

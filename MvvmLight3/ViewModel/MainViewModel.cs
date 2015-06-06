@@ -3,6 +3,7 @@ using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GolfClub.Convertor;
+using GolfClub.Interfaces;
 using GolfClub.Model;
 using System;
 using System.Collections.Generic;

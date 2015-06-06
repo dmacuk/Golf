@@ -1,10 +1,12 @@
-﻿using GolfClub.Design;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using GolfClub.Design;
+using GolfClub.Interfaces;
+using GolfClub.Model;
+using Newtonsoft.Json;
 
-namespace GolfClub.Model
+namespace GolfClub.Services
 {
     public class DataService : IDataService
     {

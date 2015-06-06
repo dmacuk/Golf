@@ -1,9 +1,11 @@
-﻿using GolfClub.Windows;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
+using GolfClub.Interfaces;
+using GolfClub.Model;
+using GolfClub.Windows;
 using Microsoft.Win32;
 
-namespace GolfClub.Model
+namespace GolfClub.Services
 {
     public class WindowService : IWindowService
     {
