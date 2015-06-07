@@ -94,5 +94,17 @@ namespace GolfClub.Properties {
                 this["ShowToolbarText"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseNewWindowSettings {
+            get {
+                return ((bool)(this["UseNewWindowSettings"]));
+            }
+            set {
+                this["UseNewWindowSettings"] = value;
+            }
+        }
     }
 }

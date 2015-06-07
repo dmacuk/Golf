@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GolfClub.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using System.Windows;
 
 namespace GolfClub.Utilities
 {
-    internal enum WindowSetting
+    internal enum WindowPositionsSetting
     {
         Left,
         Top,
@@ -19,9 +20,9 @@ namespace GolfClub.Utilities
     {
         #region Fields
 
-        private const string WindowSettingsFile = "GolfWindowsSettings.json";
-        private static readonly Dictionary<string, double> Settings;
-        private static readonly Array WindowSettings = Enum.GetValues(typeof(WindowSetting));
+        private static readonly string WindowSettingsFile = "GolfWindowsSettings.json";
+        private static readonly Dictionary<string, double> WindowSettings;
+        private static readonly Array WindowPositionSettings = Enum.GetValues(typeof(WindowPositionsSetting));
 
         #endregion Fields
 
@@ -29,55 +30,74 @@ namespace GolfClub.Utilities
 
         static WindowSettingsExtensions()
         {
-            Settings = LoadSettings();
+            bool usedOldSettings;
+            if (Settings.Default.UseNewWindowSettings)
+            {
+                WindowSettingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "GolfWindowsSettings.json");
+                usedOldSettings = false;
+            }
+            else
+            {
+                WindowSettingsFile = "GolfWindowsSettings.json";
+                Settings.Default.UseNewWindowSettings = true;
+                Settings.Default.Save();
+                usedOldSettings = true;
+            }
+            WindowSettings = LoadSettings();
+
+            if (!usedOldSettings) return;
+            // JIC we loaded from the old location
+            File.Delete(WindowSettingsFile);
+            // And make sure we're using the new location
+            WindowSettingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "GolfWindowsSettings.json");
         }
 
         public static Dictionary<string, double> LoadWindowSettings(this Window window)
         {
-            foreach (WindowSetting setting in WindowSettings)
+            foreach (WindowPositionsSetting setting in WindowPositionSettings)
             {
                 var settingName = window.GetType().Name + setting;
-                if (!Settings.ContainsKey(settingName)) continue;
-                var value = Settings[settingName];
+                if (!WindowSettings.ContainsKey(settingName)) continue;
+                var value = WindowSettings[settingName];
                 SetWindowSetting(window, setting, value);
             }
-            return Settings;
+            return WindowSettings;
         }
 
         public static void SaveWindowSettings(this Window window, Dictionary<string, double> additionalSettings = null)
         {
-            foreach (WindowSetting setting in WindowSettings)
+            foreach (WindowPositionsSetting setting in WindowPositionSettings)
             {
                 var settingName = window.GetType().Name + setting;
                 double value = GetSettingValue(window, setting);
-                Settings[settingName] = value;
+                WindowSettings[settingName] = value;
             }
             if (additionalSettings != null)
                 foreach (KeyValuePair<string, double> additionalSetting in additionalSettings)
                 {
-                    Settings[additionalSetting.Key] = additionalSetting.Value;
+                    WindowSettings[additionalSetting.Key] = additionalSetting.Value;
                 }
-            Settings.Save();
+            WindowSettings.Save();
         }
 
-        private static double GetSettingValue(Window window, WindowSetting setting)
+        private static double GetSettingValue(Window window, WindowPositionsSetting setting)
         {
             double value;
             switch (setting)
             {
-                case WindowSetting.Height:
+                case WindowPositionsSetting.Height:
                     value = window.Height;
                     break;
 
-                case WindowSetting.Left:
+                case WindowPositionsSetting.Left:
                     value = window.Left;
                     break;
 
-                case WindowSetting.Top:
+                case WindowPositionsSetting.Top:
                     value = window.Top;
                     break;
 
-                case WindowSetting.Width:
+                case WindowPositionsSetting.Width:
                     value = window.Width;
                     break;
 
@@ -100,24 +120,24 @@ namespace GolfClub.Utilities
             File.WriteAllText(WindowSettingsFile, JsonConvert.SerializeObject(settings));
         }
 
-        private static void SetWindowSetting(Window window, WindowSetting setting, double value)
+        private static void SetWindowSetting(Window window, WindowPositionsSetting setting, double value)
         {
             switch (setting)
             {
-                case WindowSetting.Height:
+                case WindowPositionsSetting.Height:
                     window.Height = value;
                     break;
 
-                case WindowSetting.Left:
+                case WindowPositionsSetting.Left:
 
                     window.Left = value;
                     break;
 
-                case WindowSetting.Top:
+                case WindowPositionsSetting.Top:
                     window.Top = value;
                     break;
 
-                case WindowSetting.Width:
+                case WindowPositionsSetting.Width:
                     window.Width = value;
                     break;
 
