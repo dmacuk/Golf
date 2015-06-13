@@ -13,7 +13,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GolfClub.Design;
 using GolfClub.Interfaces;
-using GolfClub.Model;
 using GolfClub.Services;
 using Microsoft.Practices.ServiceLocation;
 
@@ -38,11 +37,13 @@ namespace GolfClub.ViewModel
             {
                 SimpleIoc.Default.Register<IDataService, DesignDataService>();
                 SimpleIoc.Default.Register<IWindowService, DesignWindowService>();
+                SimpleIoc.Default.Register<IFileService, DesignFileService>();
             }
             else
             {
                 SimpleIoc.Default.Register<IDataService, DataService>();
                 SimpleIoc.Default.Register<IWindowService, WindowService>();
+                SimpleIoc.Default.Register<IFileService, FileService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();

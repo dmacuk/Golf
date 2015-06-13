@@ -2,6 +2,7 @@
 using System.Windows;
 using GolfClub.Interfaces;
 using GolfClub.Model;
+using GolfClub.Reports;
 using GolfClub.Windows;
 using Microsoft.Win32;
 
@@ -55,7 +56,7 @@ namespace GolfClub.Services
 
         public void Report(string reportTitle, List<Person> data)
         {
-            new ReportWindow(reportTitle, data).ShowDialog();
+            new ReportViewWindow(reportTitle, data).ShowDialog();
         }
 
         #endregion Methods

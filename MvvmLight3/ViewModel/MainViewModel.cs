@@ -1,8 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using System.ComponentModel;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GolfClub.Convertor;
+using GolfClub.Design;
 using GolfClub.Interfaces;
 using GolfClub.Model;
 using System;
@@ -22,6 +23,7 @@ namespace GolfClub.ViewModel
 
         private readonly IDataService _dataService;
         private readonly IWindowService _windowService;
+        private readonly IFileService _fileService;
 
         private int _dummy;
         private bool _listDirty;
@@ -37,11 +39,11 @@ namespace GolfClub.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService, IWindowService windowService)
+        public MainViewModel(IDataService dataService, IWindowService windowService, IFileService fileService)
         {
-            if (dataService == null) throw new ArgumentNullException("dataService");
             _dataService = dataService;
             _windowService = windowService;
+            _fileService = fileService;
             _dataService.Load((people, error) =>
             {
                 if (error != null)
@@ -117,15 +119,13 @@ namespace GolfClub.ViewModel
 
         public ICommand SettingsCommand { get; set; }
 
-        public ICommand ReportAllEntriesCommand { get; set; }
-
-        public ICommand ReportExpiredEntriesCommand { get; set; }
-
-        public ICommand ReportDueEntriesCommand { get; set; }
+        public ICommand ReportCommand { get; set; }
 
         public ICommand SelectDueCommand { get; set; }
 
         public ICommand SelectExpiredCommand { get; set; }
+
+        public ICommand ExportCommand { get; set; }
 
         #endregion Properties
 
@@ -234,16 +234,54 @@ namespace GolfClub.ViewModel
                 ToolbarSettings();
             });
 
-            ReportAllEntriesCommand = new RelayCommand(() => _windowService.Report("All Members", People.ToList()));
+            ReportCommand = new RelayCommand<string>(selection => _windowService.Report(GetReportTitle(selection), GetReportData(selection)));
 
-            ReportExpiredEntriesCommand = new RelayCommand(() => _windowService.Report("Expired Members", MembershipExpiredPeople().ToList()));
-
-            ReportDueEntriesCommand = new RelayCommand(() => _windowService.Report("Membership Due", MembershipDuePeople().ToList()));
+            ExportCommand = new RelayCommand<string>(selection => _fileService.WriteCvFile(GetReportData(selection)));
 
             SelectDueCommand = new RelayCommand(() => Select(MembershipDuePeople()));
 
             SelectExpiredCommand = new RelayCommand(() => Select(MembershipExpiredPeople()));
 
+        }
+
+        private static string GetReportTitle(string selection)
+        {
+            switch (selection)
+            {
+                case "All":
+                    return "All Members";
+                case "Expired":
+                    return "Expired Members";
+                case "Due":
+                    return "Due Members";
+                case "Selected":
+                    return "Selected Members";
+                default:
+                    throw new InvalidEnumArgumentException(@"Invalid selection: " + selection);
+            }
+        }
+
+        private List<Person> GetReportData(string selection)
+        {
+            IEnumerable<Person> data;
+            switch (selection)
+            {
+                case "All":
+                    data = People;
+                    break;
+                case "Expired":
+                    data = MembershipExpiredPeople();
+                    break;
+                case "Due":
+                    data = MembershipDuePeople();
+                    break;
+                case "Selected":
+                    data = People.Where(p => p.Selected);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException(@"Invalid selection: "+selection);
+            }
+            return data.ToList();
         }
 
         private void Select(IEnumerable<Person> selection)

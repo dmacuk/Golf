@@ -106,5 +106,17 @@ namespace GolfClub.Properties {
                 this["UseNewWindowSettings"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastPrinter {
+            get {
+                return ((string)(this["LastPrinter"]));
+            }
+            set {
+                this["LastPrinter"] = value;
+            }
+        }
     }
 }

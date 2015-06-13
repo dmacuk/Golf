@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
         xmlns:convertor="clr-namespace:GolfClub.Convertor"
+        xmlns:local="clr-namespace:GolfClub.Interfaces"
         mc:Ignorable="d ignore"
         Height="451.015"
         Width="737.313"
@@ -25,9 +26,16 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Margin="5">
             <MenuItem Header="_Reports">
-                <MenuItem Header="All entries" Command="{Binding ReportAllEntriesCommand}" />
-                <MenuItem Header="Expired entries" Command="{Binding ReportExpiredEntriesCommand}" />
-                <MenuItem Header="Due entries" Command="{Binding ReportDueEntriesCommand}" />
+                <MenuItem Header="All entries" Command="{Binding ReportCommand}" CommandParameter="All" />
+                <MenuItem Header="Expired entries" Command="{Binding ReportCommand}" CommandParameter="Expired"/>
+                <MenuItem Header="Due entries" Command="{Binding ReportCommand}" CommandParameter="Due"/>
+                <MenuItem Header="Selected entries" Command="{Binding ReportCommand}" CommandParameter="Selected"/>
+            </MenuItem>
+            <MenuItem Header="Export">
+                <MenuItem Header="All entries" Command="{Binding ExportCommand}" CommandParameter="All" />
+                <MenuItem Header="Expired entries" Command="{Binding ExportCommand}" CommandParameter="Expired"/>
+                <MenuItem Header="Due entries" Command="{Binding ExportCommand}" CommandParameter="Due"/>
+                <MenuItem Header="Selected entries" Command="{Binding ExportCommand}" CommandParameter="Selected"/>
             </MenuItem>
         </Menu>
         <ToolBarTray Grid.Row="1">

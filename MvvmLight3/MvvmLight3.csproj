@@ -64,6 +64,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
@@ -80,6 +83,7 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -101,13 +105,21 @@
     </ApplicationDefinition>
     <Compile Include="Convertor\MembershipColourConvertor.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Design\DesignFileService.cs" />
     <Compile Include="Design\DesignWindowService.cs" />
+    <Compile Include="Interfaces\IFileService.cs" />
     <Compile Include="Interfaces\IDataService.cs" />
     <Compile Include="Interfaces\IWindowService.cs" />
+    <Compile Include="Interfaces\ReportType.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Reports\ReportViewWindow.xaml.cs">
+      <DependentUpon>ReportViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\WindowService.cs" />
+    <Compile Include="Utilities\DocumentPaginatorWrapper.cs" />
     <Compile Include="ViewModel\EmailViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -131,6 +143,10 @@
     <Compile Include="Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Reports\ReportViewWindow.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Emailer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using GolfClub.Properties;
 using GolfClub.Utilities;
 using GolfClub.ViewModel;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace GolfClub
 
         private void WindowClosing(object sender, CancelEventArgs e)
         {
+            Settings.Default.Save();
             this.SaveWindowSettings();
         }
 
